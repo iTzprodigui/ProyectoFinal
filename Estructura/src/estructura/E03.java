@@ -5,15 +5,20 @@
  */
 package estructura;
 
-/**
- *
- * @author Carlos
- */
+import java.util.LinkedList;
+import java.util.Queue;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class E03 extends javax.swing.JPanel {
-
-
+    float sum;
+    DefaultTableModel modelo;
+    Queue<String> cola = new LinkedList<>();
+    String tabla[] = new String[2];
+    
     public E03() {
         initComponents();
+        modelo = (DefaultTableModel) tablaClientes.getModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -28,13 +33,12 @@ public class E03 extends javax.swing.JPanel {
         tablaClientes = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         personasAtendidas = new javax.swing.JLabel();
-        ListaClientes = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        retiro = new javax.swing.JCheckBox();
+        deposito = new javax.swing.JCheckBox();
+        consulta = new javax.swing.JCheckBox();
+        actualizacion = new javax.swing.JCheckBox();
+        pagos = new javax.swing.JCheckBox();
 
         jLabel1.setText("Nombre:");
 
@@ -60,24 +64,17 @@ public class E03 extends javax.swing.JPanel {
             }
         });
 
-        ListaClientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar cliente" }));
-        ListaClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListaClientesgetNombre(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Transacciones"));
 
-        jCheckBox1.setText("Retiro");
+        retiro.setText("Retiro");
 
-        jCheckBox2.setText("Depósito");
+        deposito.setText("Depósito");
 
-        jCheckBox3.setText("Consulta");
+        consulta.setText("Consulta");
 
-        jCheckBox4.setText("Actualización");
+        actualizacion.setText("Actualización");
 
-        jCheckBox5.setText("Pagos");
+        pagos.setText("Pagos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,25 +83,25 @@ public class E03 extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5))
+                    .addComponent(retiro)
+                    .addComponent(deposito)
+                    .addComponent(consulta)
+                    .addComponent(actualizacion)
+                    .addComponent(pagos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jCheckBox1)
+                .addComponent(retiro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(deposito)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox3)
+                .addComponent(consulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox4)
+                .addComponent(actualizacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox5))
+                .addComponent(pagos))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -120,7 +117,6 @@ public class E03 extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addComponent(jButton1))
-                            .addComponent(ListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,14 +142,12 @@ public class E03 extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(11, 11, 11)
                         .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(ListaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addGap(98, 98, 98)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(personasAtendidas, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))))
                 .addGap(4, 4, 4)
@@ -162,30 +156,86 @@ public class E03 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1AgregarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1AgregarCliente
-
+        //Suma
+        if(retiro.isSelected()){
+            sum +=4;
+        }
+        if(deposito.isSelected()){
+            sum +=2;
+        }
+        if(consulta.isSelected()){
+            sum +=3.5;
+        }
+        if(actualizacion.isSelected()){
+            sum +=5;
+        }
+        if(pagos.isSelected()){
+            sum +=2;
+        }
+        //Insertamos los valores en la filas
+        validarTabla();
+        //Borrar todo
+        borrar();
 
     }//GEN-LAST:event_jButton1AgregarCliente
-
-    private void ListaClientesgetNombre(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaClientesgetNombre
-
-    }//GEN-LAST:event_ListaClientesgetNombre
-
+    public void validarTabla(){
+        for (int i=0; i < modelo.getRowCount(); i++){ //Recorremos toda la tabla
+            if(modelo.getValueAt(i, 0).equals(campoNombre.getText())){ //Dentro del modelo en la fila iterada buscamos un valor sobre la columna 0
+                JOptionPane.showMessageDialog(null, "Este cliente ya existe"); //Mensaje de error
+                modelo.removeRow(i); //Eleminamos la fila repetida
+                cola.poll(); //Eliminamos de la cola al ultimo que entro es decir el repetido
+            }
+        }
+        if (campoNombre.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No puedes registrar un campo vacio");
+        }else{
+            llenarTabla();
+        }
+    }
+    public void llenarTabla(){
+        //Insertamos los valores en la filas
+        tabla[0] = campoNombre.getText();
+        tabla[1] = String.valueOf(sum);
+        
+        modelo.addRow(tabla); //Insertamos los valores de las filas en la tabla
+        cola.add(campoNombre.getText()); // Insertamos en la cola el nombre ingresado
+        personasAtendidas.setText(Integer.toString(cola.size())); // Mostramos el numero de personas atendidas
+        System.out.println(cola);
+    }
+    public void borrar(){
+        campoNombre.setText("");
+        
+        if(retiro.isSelected()){
+            retiro.setSelected(false);
+        }
+        if(deposito.isSelected()){
+            deposito.setSelected(false);
+        }
+        if(consulta.isSelected()){
+            consulta.setSelected(false);
+        }
+        if(actualizacion.isSelected()){
+            actualizacion.setSelected(false);
+        }
+        if(pagos.isSelected()){
+            pagos.setSelected(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox ListaClientes;
+    private javax.swing.JCheckBox actualizacion;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JCheckBox consulta;
+    private javax.swing.JCheckBox deposito;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox pagos;
     private javax.swing.JLabel personasAtendidas;
+    private javax.swing.JCheckBox retiro;
     private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 }
