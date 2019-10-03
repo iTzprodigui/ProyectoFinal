@@ -156,6 +156,7 @@ public class E03 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1AgregarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1AgregarCliente
+        sum=0;
         //Suma
         if(retiro.isSelected()){
             sum +=4;
@@ -184,6 +185,7 @@ public class E03 extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Este cliente ya existe"); //Mensaje de error
                 modelo.removeRow(i); //Eleminamos la fila repetida
                 cola.poll(); //Eliminamos de la cola al ultimo que entro es decir el repetido
+                
             }
         }
         if (campoNombre.getText().isEmpty()){
