@@ -91,14 +91,14 @@ int mouseY;
         Footer.setLayout(FooterLayout);
         FooterLayout.setHorizontalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FooterLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterLayout.createSequentialGroup()
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(heartIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         FooterLayout.setVerticalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +111,7 @@ int mouseY;
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 360, 20));
+        getContentPane().add(Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 310, 20));
 
         Header.setBackground(new java.awt.Color(52, 55, 63));
         Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -214,10 +214,10 @@ int mouseY;
                 .addComponent(OpcF06, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(OpcF07, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
-        getContentPane().add(BarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 50, 330));
+        getContentPane().add(BarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 50, 350));
 
         PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
